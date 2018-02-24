@@ -659,3 +659,7 @@ specific requirements.
 if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 <http://www.gnu.org/licenses/>.
+
+=============================================================================
+Code and files from https://github.com/Apollo-Community/ApolloStation/commit/fad531cd2f554c79c814e57cfdd48bbd01e39170
+have been used to include the nucleation race. This code has been written by Kwask (https://github.com/Kwask) and is licensed under the agpl vs license as well. Icons are under the Creative Commons 3.0 BY-SA license.

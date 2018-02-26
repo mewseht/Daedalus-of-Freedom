@@ -80,3 +80,24 @@
 	blurb = "Ook ook."
 	icobase = 'icons/mob/human_races/subspecies/r_upliftedchimp.dmi'
 */
+
+/datum/species/human/nucleation
+	name = "Nucleation"
+	name_plural = "Nucleations"
+	blurb = "A sub-race of unforunates who have been exposed to too much supermatter radiation. As a result, \
+	supermatter crystal clusters have begun to grow across their bodies. Research to find a cure for this ailment \
+	has been slow, and so this is a common fate for veteran engineers. The supermatter crystals produce oxygen, \
+	negating the need for the individual to breath. Their massive change in biology, however, renders most medicines \
+	obselete. Ionizing radiation seems to cause resonance in some of their crystals, which seems to encourage regeneration \
+	and produces a calming effect on the individual. Nucleations are highly stigmatized, and are treated much in the same \
+	way as lepers were back on Earth."
+
+	icobase = 'icons/mob/human_races/subspecies/r_nucleation.dmi'
+
+	appearance_flags = HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+
+/datum/species/human/nucleation/handle_post_spawn(var/mob/living/carbon/human/H)
+	H.gender = "neuter"
+	H.set_light(3,2,"1C1C00")
+	return ..()
+

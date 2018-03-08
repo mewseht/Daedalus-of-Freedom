@@ -32,6 +32,9 @@
 
 /datum/surgery_step/limb/attach/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
+	if(target.species.species_flags & SPECIES_FLAG_NO_ROBOLIMBS) 
+		user.visible_message("<span class='notice'>[user] looks at the stump and shakes their head.</span>","<span class='notice'>You realize you cannot attach this to [E.name] because their nerves are too damaged.</span>")
+		return 0
 	user.visible_message("[user] starts attaching [E.name] to [target]'s [E.amputation_point].", \
 	"You start attaching [E.name] to [target]'s [E.amputation_point].")
 

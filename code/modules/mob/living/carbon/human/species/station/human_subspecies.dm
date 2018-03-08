@@ -94,10 +94,19 @@
 
 	icobase = 'icons/mob/human_races/subspecies/r_nucleation.dmi'
 
+	species_flags = SPECIES_FLAG_NO_PAIN | SPECIES_FLAG_NO_MINOR_CUT | SPECIES_FLAG_NO_SCAN | SPECIES_FLAG_NO_ROBOLIMBS
 	appearance_flags = HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	spawn_flags = SPECIES_NO_LACE | SPECIES_CAN_JOIN
+
+	has_organ = list(
+	BP_LIVER =    /obj/item/organ/internal/liver,
+	BP_KIDNEYS =  /obj/item/organ/internal/kidneys,
+	BP_BRAIN =    /obj/item/organ/internal/brain,
+	BP_EYES =     /obj/item/organ/internal/eyes
+	)
 
 /datum/species/human/nucleation/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.gender = "neuter"
+//	H.hair = "bald"
 	H.set_light(3,2,"1C1C00")
 	return ..()
-

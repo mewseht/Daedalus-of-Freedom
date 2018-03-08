@@ -20,7 +20,7 @@ var/datum/robolimb/basic_robolimb
 	var/use_eye_icon = "eyes_s"
 	var/can_feel_pain
 	var/skintone
-	var/list/species_cannot_use = list()
+	var/list/species_cannot_use = list("Nucleation")
 	var/list/restricted_to = list()
 	var/list/applies_to_part = list() //TODO.
 

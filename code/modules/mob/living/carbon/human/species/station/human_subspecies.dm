@@ -108,5 +108,5 @@
 /datum/species/human/nucleation/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.gender = "neuter"
 //	H.hair = "bald"
-	H.set_light(3,2,"1C1C00")
+	H.set_light(0.5,3,5,DEFAULT_FALLOFF_CURVE,"1C1C00")
 	return ..()

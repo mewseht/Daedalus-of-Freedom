@@ -129,7 +129,7 @@ default behaviour is:
 		spawn(0)
 			..()
 			if (!istype(AM, /atom/movable) || AM.anchored)
-				if(confused && prob(50) && m_intent=="run")
+				if(confused && prob(50) && m_intent==M_RUN)
 					Weaken(2)
 					playsound(loc, "punch", 25, 1, -1)
 					visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [AM]!</span>")
@@ -230,17 +230,13 @@ default behaviour is:
 
 	return temperature
 
-
-// ++++ROCKDTBEN++++ MOB PROCS -- Ask me before touching.
-// Stop! ... Hammertime! ~Carn
-// I touched them without asking... I'm soooo edgy ~Erro (added nodamage checks)
-
 /mob/living/proc/getBruteLoss()
 	return maxHealth - health
 
 /mob/living/proc/adjustBruteLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
-	health = max(health-amount, 0)
+	if (status_flags & GODMODE)
+		return
+	health = Clamp(health - amount, 0, maxHealth)
 
 /mob/living/proc/getOxyLoss()
 	return 0
@@ -780,6 +776,8 @@ default behaviour is:
 		. += 15
 	if(confused)
 		. += 30
+	if(CLUMSY in mutations)
+		. += 40
 
 /mob/living/proc/ranged_accuracy_mods()
 	. = 0
@@ -791,3 +789,5 @@ default behaviour is:
 		. -= 5
 	if(eye_blurry)
 		. -= 1
+	if(CLUMSY in mutations)
+		. -= 3

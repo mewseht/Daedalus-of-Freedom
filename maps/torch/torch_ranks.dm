@@ -149,6 +149,7 @@
 		/datum/mil_rank/civ/civ,
 		/datum/mil_rank/civ/nt,
 		/datum/mil_rank/civ/contractor,
+		/datum/mil_rank/civ/offduty,
 		/datum/mil_rank/civ/marshal,
 		/datum/mil_rank/civ/synthetic
 	)
@@ -157,6 +158,7 @@
 		/datum/mil_rank/civ/civ,
 		/datum/mil_rank/civ/nt,
 		/datum/mil_rank/civ/contractor,
+		/datum/mil_rank/civ/offduty,
 		/datum/mil_rank/civ/marshal,
 		/datum/mil_rank/civ/synthetic
 	)

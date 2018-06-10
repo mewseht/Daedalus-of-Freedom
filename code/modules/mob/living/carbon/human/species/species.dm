@@ -46,6 +46,8 @@
 	var/icon/icon_template = 'icons/mob/human_races/r_template.dmi' // Used for mob icon generation for non-32x32 species.
 	var/pixel_offset_x = 0                    // Used for offsetting large icons.
 	var/pixel_offset_y = 0                    // Used for offsetting large icons.
+	var/antaghud_offset_x = 0                 // As above, but specifically for the antagHUD indicator.
+	var/antaghud_offset_y = 0                 // As above, but specifically for the antagHUD indicator.
 
 	var/mob_size	= MOB_MEDIUM
 	var/strength    = STR_MEDIUM
@@ -53,7 +55,7 @@
 	var/virus_immune
 	var/short_sighted                         // Permanent weldervision.
 	var/light_sensitive                       // Ditto, but requires sunglasses to fix
-	var/blood_volume = 560                    // Initial blood volume.
+	var/blood_volume = SPECIES_BLOOD_DEFAULT  // Initial blood volume.
 	var/hunger_factor = DEFAULT_HUNGER_FACTOR // Multiplier for hunger.
 	var/taste_sensitivity = TASTE_NORMAL      // How sensitive the species is to minute tastes.
 
@@ -191,6 +193,24 @@
 		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
+		)
+
+	// The list for the bioprinter to print based on species
+	var/list/bioprint_products = list(
+		BP_HEART    = list(/obj/item/organ/internal/heart,      25),
+		BP_LUNGS    = list(/obj/item/organ/internal/lungs,      25),
+		BP_KIDNEYS  = list(/obj/item/organ/internal/kidneys,    20),
+		BP_EYES     = list(/obj/item/organ/internal/eyes,       20),
+		BP_LIVER    = list(/obj/item/organ/internal/liver,      25),
+		BP_GROIN    = list(/obj/item/organ/external/groin,      80),
+		BP_L_ARM    = list(/obj/item/organ/external/arm,        65),
+		BP_R_ARM    = list(/obj/item/organ/external/arm/right,  65),
+		BP_L_LEG    = list(/obj/item/organ/external/leg,        65),
+		BP_R_LEG    = list(/obj/item/organ/external/leg/right,  65),
+		BP_L_FOOT   = list(/obj/item/organ/external/foot,       40),
+		BP_R_FOOT   = list(/obj/item/organ/external/foot/right, 40),
+		BP_L_HAND   = list(/obj/item/organ/external/hand,       40),
+		BP_R_HAND   = list(/obj/item/organ/external/hand/right, 40)
 		)
 
 	// The basic skin colours this species uses

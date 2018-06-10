@@ -30,9 +30,9 @@
 	if(.)
 		if(src.nutrition && src.stat != 2)
 			src.nutrition -= DEFAULT_HUNGER_FACTOR/10
-			if(src.m_intent == "run")
+			if(src.m_intent == M_RUN)
 				src.nutrition -= DEFAULT_HUNGER_FACTOR/10
-		if((FAT in src.mutations) && src.m_intent == "run" && src.bodytemperature <= 360)
+		if((FAT in src.mutations) && src.m_intent == M_RUN && src.bodytemperature <= 360)
 			src.bodytemperature += 2
 
 		// Moving around increases germ_level faster
@@ -309,8 +309,9 @@
 	if(!src.lastarea)
 		src.lastarea = get_area(src.loc)
 	if((istype(src.loc, /turf/space)) || (src.lastarea.has_gravity == 0))
-		src.inertia_dir = get_dir(target, src)
-		step(src, inertia_dir)
+		if(prob((itemsize * itemsize * 10) * MOB_MEDIUM/src.mob_size))
+			src.inertia_dir = get_dir(target, src)
+			step(src, inertia_dir)
 
 
 /*

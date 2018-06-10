@@ -25,6 +25,7 @@
 	permeability_coefficient = 0.1
 	unacidable = 1
 
+	var/equipment_overlay_icon = 'icons/mob/onmob/rig_modules.dmi'
 	var/hides_uniform = 1 	//used to determinate if uniform should be visible whenever the suit is sealed or not
 
 	var/interface_path = "hardsuit.tmpl"
@@ -411,8 +412,6 @@
 		var/mob/living/carbon/human/H = user
 		if(istype(H) && H.back != src)
 			fail_msg = "<span class='warning'>You must be wearing \the [src] to do this.</span>"
-		else if(user.incorporeal_move)
-			fail_msg = "<span class='warning'>You must be solid to do this.</span>"
 	if(sealing)
 		fail_msg = "<span class='warning'>The hardsuit is in the process of adjusting seals and cannot be activated.</span>"
 	else if(!fail_msg && ((use_unconcious && user.stat > 1) || (!use_unconcious && user.stat)))
@@ -522,10 +521,10 @@
 			species_icon =  sprite_sheets[wearer.species.get_bodytype(wearer)]
 		mob_icon = image("icon" = species_icon, "icon_state" = "[icon_state]")
 
-	if(installed_modules.len)
+	if(equipment_overlay_icon && LAZYLEN(installed_modules))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
-				chest.overlays += image("icon" = 'icons/mob/onmob/rig_modules.dmi', "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
+				chest.overlays += image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
 
 	if(wearer)
 		wearer.update_inv_shoes()
@@ -542,9 +541,10 @@
 	if(slot != slot_back_str || offline)
 		return ret
 
-	for(var/obj/item/rig_module/module in installed_modules)
-		if(module.suit_overlay)
-			ret.overlays += image("icon" = 'icons/mob/onmob/rig_modules.dmi', "icon_state" = "[module.suit_overlay]")
+	if(equipment_overlay_icon && LAZYLEN(installed_modules))
+		for(var/obj/item/rig_module/module in installed_modules)
+			if(module.suit_overlay)
+				ret.overlays += image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]")
 	return ret
 
 /obj/item/weapon/rig/proc/check_suit_access(var/mob/living/carbon/human/user)

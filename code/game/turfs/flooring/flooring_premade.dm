@@ -122,9 +122,6 @@
 /turf/simulated/floor/reinforced/phoron/fuel
 	initial_gas = list("phoron" = ATMOSTANK_PHORON_FUEL)
 
-/turf/simulated/floor/reinforced/hydrogen
-	initial_gas = list("hydrogen" = ATMOSTANK_HYDROGEN)
-
 /turf/simulated/floor/reinforced/hydrogen/fuel
 	initial_gas = list("hydrogen" = ATMOSTANK_HYDROGEN_FUEL)
 
@@ -315,10 +312,12 @@
 	name = "coastline"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "sandwater"
+	turf_flags = TURF_IS_WET
 
 /turf/simulated/floor/beach/water
 	name = "water"
 	icon_state = "water"
+	turf_flags = TURF_IS_WET
 
 /turf/simulated/floor/beach/water/update_dirt()
 	return	// Water doesn't become dirty

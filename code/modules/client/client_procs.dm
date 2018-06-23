@@ -200,6 +200,15 @@
 
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
+
+	for(var/client/target in GLOB.clients)
+		if(!target)
+			continue
+		if(target.get_preference_value(/datum/client_preference/show_ooc) == GLOB.PREF_SHOW)
+			to_chat(target, "<span class='notice'><b>[src.key] has connected to the server.</b></span>")
+		if(target.get_preference_value(/datum/client_preference/play_notifications) == GLOB.PREF_YES)
+			target << sound('sound/piano/Gn7.ogg', repeat = 0, wait = 0, volume = 100, channel = 3)
+
 	//////////////
 	//DISCONNECT//
 	//////////////

@@ -149,6 +149,11 @@ var/list/_client_preferences_by_type
 	key = "CHAT_OOC"
 	options = list(GLOB.PREF_SHOW, GLOB.PREF_HIDE)
 
+/datum/client_preference/play_notifications
+	description ="Play join/chat notification sounds"
+	key = "CHAT_NOTIFICATIONS"
+	options = list(GLOB.PREF_YES, GLOB.PREF_NO)
+
 /datum/client_preference/show_aooc
 	description ="AOOC chat"
 	key = "CHAT_AOOC"

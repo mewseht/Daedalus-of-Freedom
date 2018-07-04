@@ -179,7 +179,7 @@
 		if("Grant Nuclear Authorization Code")
 			var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
 			if(nuke)
-				to_chat(usr, "The nuclear authorization code is [nuke.r_code]")
+				to_chat(usr, "<span class='notice'>The nuclear authorization code is [nuke.r_code].</span>")
 			else
 				to_chat(usr, "No self destruct terminal found.")
 			feedback_inc("alert_keycard_auth_nukecode",1)

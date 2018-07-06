@@ -178,14 +178,17 @@ Please contact me on #coderbus IRC. ~Carn x
 				for(var/image/overlay in entry)
 					overlay.transform = M
 					overlays += overlay
-		if(species.has_floating_eyes)
-			overlays |= species.get_eyes(src)
+
+		var/obj/item/organ/external/head/head = organs_by_name[BP_HEAD]
+		if(istype(head) && !head.is_stump())
+			var/image/I = head.get_eye_overlay()
+			if(I) overlays |= I
 
 	if(auras)
 		overlays |= auras
 
 	var/matrix/M = matrix()
-	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
+	if(lying)
 		M.Turn(90)
 		M.Scale(size_multiplier)
 		M.Translate(1,-6)

@@ -148,6 +148,27 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 /obj/machinery/message_server/proc/send_to_department(var/department, var/message, var/tone)
 	var/reached = 0
 
+	for(var/mob/living/silicon/robot/R in GLOB.silicon_mob_list)
+		var/obj/item/device/radio/borg = locate() in R
+		if(!borg)
+			continue
+		
+		var/notify = FALSE
+		
+		if(R.module)
+			if(department == MED && "Medical" in R.module.channels)
+				notify = TRUE
+			else if(department == ENG && "Engineering" in R.module.channels)
+				notify = TRUE
+			else if(department == SEC && "Security" in R.module.channels)
+				notify = TRUE
+			//TODO: Add more departments if more pagers are placed.
+			
+			
+		if(notify)
+			to_chat(R, "<span class='notice'>Your [borg.name] alerts you to the fact that somebody is requesting your presence at your department.</span>")
+			reached++
+	
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		var/obj/item/modular_computer/pda/pda = locate() in H
 		if(!pda)
